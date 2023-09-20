@@ -33,7 +33,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 		if (args[0] == NULL)
 		{
 			free(args);
-			continue;	
+			continue;
 		}
 		if (args != NULL)
 		{
