@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * main - is a main function that accept argument
+ * main - is a main function that accepts argument
  * @argc: a command argument count
  * @argv: a command argument vector
  * Return: integer
@@ -12,7 +12,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 	char *line = NULL;
 	char **args = NULL;
 	size_t len = 0;
-	int line_len, shell_exit = 0;
+	int line_len;
 
 	while (1)
 	{
@@ -32,10 +32,9 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 		args = _strtok(line);
 		if (args[0] == NULL)
 		{
-			free(args);	
-			continue;		
+			free(args);
+			continue;	
 		}
-			
 		if (args != NULL)
 		{
 			execmd(args[0], args);
