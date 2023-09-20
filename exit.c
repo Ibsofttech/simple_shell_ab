@@ -12,5 +12,6 @@ int my_exit(char *args)
 		free(args);
 		return (1);
 	}
+	return(1);
 }
 
