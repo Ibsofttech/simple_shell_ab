@@ -25,14 +25,14 @@ int execmd(char *command, char **args)
 		main_command = get_location(command);
 		if (main_command == NULL)
 		{
-			perror("my error");
-			exit(1);
+			perror("./hsh");
+			return (0);
 		}
 		exec_return = execve(main_command, args, NULL);
 		if (exec_return == -1)
 		{
 			perror("./hsh");
-			exit(2);
+			return (0);
 		}
 		exit(EXIT_FAILURE);
 	}

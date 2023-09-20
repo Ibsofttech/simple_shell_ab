@@ -20,7 +20,6 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 
 		if (getline(&line, &len, stdin) == -1)
 		{
-			write(STDOUT_FILENO, "\nExiting simple_shell.\n", 24);
 			free(line);
 			exit(0);
 		}
@@ -41,5 +40,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 			free(args);
 		}
 	}
+	free(line);
+	return (0);
 }
 
