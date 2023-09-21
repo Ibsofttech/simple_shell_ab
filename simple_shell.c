@@ -12,7 +12,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 	char *line = NULL;
 	char **args = NULL;
 	size_t len = 0;
-	int line_len;
+	int line_len, i;
 
 	while (1)
 	{
@@ -31,13 +31,13 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 		args = _strtok(line);
 		if (args[0] == NULL)
 		{
-			free(args);
+			free_args(args, i);
 			continue;
 		}
 		if (args != NULL)
 		{
 			execmd(args[0], args);
-			free(args);
+			free_args(args, i);
 		}
 	}
 	free(line);

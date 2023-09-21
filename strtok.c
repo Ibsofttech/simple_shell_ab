@@ -37,6 +37,12 @@ char **_strtok(char *input)
 	while (token != NULL)
 	{
 		args[i] = malloc(sizeof(char *) * (strlen(token) + 1));
+		if (args[i] == NULL)
+		{
+			free_args(args, i);
+			free(input_copy);
+			return (NULL);
+		}
 		strcpy(args[i], token);
 		i++;
 		token = strtok(NULL, delim);
@@ -45,5 +51,23 @@ char **_strtok(char *input)
 
 	free(input_copy);
 	return (args);
+}
+
+/**
+ * free_args - function that free args allocated space
+ * @args: memory allocated
+ * @count: number of allocated memory
+ * Return: null
+*/
+
+void free_args(char **args, int count)
+{
+	int i;
+
+	for (i = 0; i < count; i++)
+	{
+		free(args[i]);
+	}
+	free(args);
 }
 

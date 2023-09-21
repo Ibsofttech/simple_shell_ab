@@ -9,7 +9,7 @@ void _env(char *line)
 {
 	int i;
 
-	if (strcmp(line, "env") == 0)
+	if (_strcmp(line, "env") == 0)
 	{
 		for (i = 0; environ[i] != NULL; i++)
 		{
