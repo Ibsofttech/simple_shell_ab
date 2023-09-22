@@ -32,7 +32,10 @@ int _strlen(char *s);
 char *str_cpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
-void free_args(char **args, int count);
+void free_args(char **args);
+void rm_newline(char *str);
+void rm_comment(char *input);
+
 
 
 #endif

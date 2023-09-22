@@ -7,10 +7,12 @@
 
 int my_exit(char *args)
 {
-	if (strcmp(args, "exit") == 0)
+	if (_strcmp(args, "exit") == 0)
 	{
-		free(args);
+		return (1);
 	}
-	return (1);
+	else
+	{
+		return (0);
+	}
 }
-

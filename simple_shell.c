@@ -12,7 +12,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 	char *line = NULL;
 	char **args = NULL;
 	size_t len = 0;
-	int line_len, i;
+	int shell_exit = 0;
 
 	while (1)
 	{
@@ -23,24 +23,23 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 			free(line);
 			exit(0);
 		}
-		line_len = strlen(line);
-		if (line_len > 0 && line[line_len - 1] == '\n')
-			line[line_len - 1] = '\0';
-		my_exit(line);
+		rm_newline(line);
+		rm_comment(line);
+		shell_exit = my_exit(line);
+		if (shell_exit == 1)
+		{
+			break;
+		}
 		_env(line);
 		args = _strtok(line);
 		if (args[0] == NULL)
 		{
-			free_args(args, i);
+			free_args(args);
 			continue;
 		}
-		if (args != NULL)
-		{
-			execmd(args[0], args);
-			free_args(args, i);
-		}
+		execmd(args[0], args);
+		free_args(args);
 	}
 	free(line);
 	return (0);
 }
-

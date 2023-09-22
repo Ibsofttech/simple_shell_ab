@@ -12,12 +12,7 @@ char **_strtok(char *input)
 	int num_token = 0, i = 0;
 	char **args = NULL;
 
-	input_copy = strdup(input);
-	if (input_copy == NULL)
-	{
-		free(input_copy);
-		return (NULL);
-	}
+	input_copy = _strdup(input);
 	token = strtok(input, delim);
 	while (token != NULL)
 	{
@@ -39,7 +34,7 @@ char **_strtok(char *input)
 		args[i] = malloc(sizeof(char *) * (strlen(token) + 1));
 		if (args[i] == NULL)
 		{
-			free_args(args, i);
+			free_args(args);
 			free(input_copy);
 			return (NULL);
 		}
@@ -56,15 +51,14 @@ char **_strtok(char *input)
 /**
  * free_args - function that free args allocated space
  * @args: memory allocated
- * @count: number of allocated memory
  * Return: null
 */
 
-void free_args(char **args, int count)
+void free_args(char **args)
 {
 	int i;
 
-	for (i = 0; i < count; i++)
+	for (i = 0; args[i]; i++)
 	{
 		free(args[i]);
 	}

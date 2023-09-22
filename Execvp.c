@@ -17,7 +17,7 @@ int execmd(char *command, char **args)
 	if (child_pid == -1)
 	{
 		perror("fork");
-		return (-1);
+		exit(2);
 	}
 
 	else if (child_pid == 0)
@@ -26,13 +26,13 @@ int execmd(char *command, char **args)
 		if (main_command == NULL)
 		{
 			perror("./hsh");
-			return (0);
+			exit(0);
 		}
 		exec_return = execve(main_command, args, NULL);
 		if (exec_return == -1)
 		{
 			perror("./hsh");
-			return (0);
+			exit(0);
 		}
 		exit(EXIT_FAILURE);
 	}
